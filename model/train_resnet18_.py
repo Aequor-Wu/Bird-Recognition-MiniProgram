@@ -13,7 +13,7 @@ VAL_DIR   = r"D:\AAA-Bird_Species_Recognition\dataset\CUB-200-2011\test"
 BATCH_SIZE = 8
 NUM_EPOCHS = 10
 NUM_CLASSES = 200
-LR = 0.001
+LR = 0.001  #当为冻结模型“LR = 0.001” | 为全训练“LR = 1e-4”
 FREEZE_BACKBONE = True  # True: 冻结骨干网络 | False: 全模型训练
 
 # ========= 数据 =========
