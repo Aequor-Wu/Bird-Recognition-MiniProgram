@@ -1,53 +1,66 @@
-# Experiment Log
+# 实验记录（Exp01）：ResNet18 冻结骨干网络（Frozen Backbone）
 
-## Exp01: ResNet18 with Frozen Backbone
+## 一、实验目的
 
-This experiment evaluates the performance of a ResNet18 model using a frozen backbone
-transfer learning strategy on the CUB-200-2011 bird species dataset.
-This experiment serves as the baseline for subsequent fine-tuning experiments.
+本实验旨在评估 **ResNet18** 在 **冻结骨干网络（Frozen Backbone）** 的迁移学习（Transfer Learning）策略下，  
+在 **CUB-200-2011 鸟类细粒度分类数据集** 上的分类性能。
 
----
-
-## 1. Experiment Setup
-
-### 1.1 Dataset
-- Name: CUB-200-2011
-- Number of classes: 200
-- Input size: 224 × 224
-- Data split: Official train / test split
-- Data loader: torchvision.datasets.ImageFolder, which automatically assigns class labels based on directory structure.
-- Evaluation metric: Top-1 Accuracy, which measures whether the model’s most confident prediction matches the ground-truth label.
-
-
-### 1.2 Model
-- Backbone: ResNet18 (ImageNet pretrained)
-- Training strategy: Transfer Learning (Frozen Backbone)
-- Trainable layers: Final fully connected layer only
-- Loss function: CrossEntropyLoss
+该实验作为后续 **全模型微调（Full Fine-tuning）实验（Exp02）** 的**基线实验（Baseline）**。
 
 ---
 
-## 2. Local GPU Experiment (RTX 3050)
+## 二、数据集说明（Dataset）
 
-### 2.1 Environment
-- OS: Windows
-- GPU: NVIDIA GeForce RTX 3050 Laptop GPU
-- Framework: PyTorch
-- CUDA: Enabled (`torch.cuda.is_available() == True`)
-- Python: 3.8
-- Conda environment: `birdgpu`
+- 数据集名称：CUB-200-2011  
+- 类别数量（Number of Classes）：200  
+- 输入尺寸（Input Size）：224 × 224  
+- 数据划分方式：官方提供的 train / test 划分  
+- 数据加载方式（Data Loader）：  
+  `torchvision.datasets.ImageFolder`  
+  - 根据文件夹结构自动分配类别标签  
+- 评估指标（Evaluation Metric）：  
+  **Top-1 Accuracy**  
+  - 表示模型预测概率最高的类别是否与真实标签一致  
 
-### 2.2 Training Configuration
-- Optimizer: Adam
-- Learning rate: 1e-3
-- Batch size: 8
-- Epochs: 10
+---
 
+## 三、模型与训练策略（Model & Strategy）
 
-### 2.3 Training Results (Top-1 Accuracy)
+- 主干网络（Backbone）：ResNet18（ImageNet 预训练）  
+- 训练策略（Training Strategy）：迁移学习（Transfer Learning）  
+- 参数冻结方式：
+  - 冻结 ResNet18 的所有卷积层参数  
+  - 仅训练最后一层全连接层（Fully Connected Layer）  
+- 损失函数（Loss Function）：CrossEntropyLoss  
 
-| Epoch | Train Loss | Validation Accuracy (%) |
-|------:|-----------:|------------------------:|
+---
+
+## 四、本地 GPU 实验（Local GPU：RTX 3050）
+
+### 4.1 实验环境（Environment）
+
+- 操作系统（OS）：Windows  
+- GPU：NVIDIA GeForce RTX 3050 Laptop GPU  
+- 深度学习框架（Framework）：PyTorch  
+- CUDA：启用（`torch.cuda.is_available() == True`）  
+- Python 版本：3.8  
+- Conda 环境：`birdgpu`  
+
+---
+
+### 4.2 训练配置（Training Configuration）
+
+- 优化器（Optimizer）：Adam  
+- 学习率（Learning Rate）：1e-3  
+- Batch Size：8  
+- 训练轮数（Epochs）：10  
+
+---
+
+### 4.3 实验结果（Top-1 Accuracy）
+
+| Epoch | Train Loss | 验证集准确率 (%) |
+|------:|-----------:|-----------------:|
 | 1 | 4.2940 | 33.62 |
 | 2 | 2.5622 | 38.87 |
 | 3 | 1.9914 | 46.19 |
@@ -59,46 +72,53 @@ This experiment serves as the baseline for subsequent fine-tuning experiments.
 | 9 | 1.0999 | 50.69 |
 | 10 | 0.9981 | 50.14 |
 
-- Final validation accuracy: **50.14%**
-
----
-## 3. Server GPU Experiment (RTX 5090)
-
-### 3.1 Environment
-- OS: Ubuntu
-- GPU: NVIDIA RTX 5090
-- Framework: PyTorch
-- CUDA: Enabled
-- Python: 3.8
-
-### 3.2 Training Configuration
-- Optimizer: Adam
-- Learning rate: TBD
-- Batch size: TBD
-- Epochs: TBD
-
-### 3.3 Training Results (Top-1 Accuracy)
-
-
----
-## 4. Analysis
-
-- Training loss decreases steadily across epochs, indicating stable convergence.
-- Validation accuracy improves rapidly during early epochs and gradually saturates.
-- Minor fluctuations in validation accuracy are observed, which is expected given the
-  relatively small batch size and dataset complexity.
-- Freezing the backbone significantly reduces training cost while still achieving
-  reasonable classification performance.
+- 最终验证集准确率（Final Validation Accuracy）：**50.14%**
 
 ---
 
-## 5. Notes
+## 五、服务器 GPU 实验（Server GPU：RTX 5090）
 
-- This experiment serves as the **baseline** for subsequent experiments.
-- The frozen-backbone strategy demonstrates that pretrained visual features from ImageNet
-  transfer effectively to fine-grained bird species classification.
-- Future work:
-  - Run the same experiment on a server GPU (RTX 5090) for efficiency comparison.
-  - Compare with **Exp02: ResNet18 with full fine-tuning** to analyze the effect of
-    unfreezing the backbone.
+### 5.1 实验环境（Environment）
+
+- 操作系统（OS）：Ubuntu  
+- GPU：NVIDIA RTX 5090  
+- 深度学习框架（Framework）：PyTorch  
+- CUDA：启用  
+- Python 版本：3.8  
+
+---
+
+### 5.2 训练配置（Training Configuration）
+
+- 优化器（Optimizer）：Adam  
+- 学习率（Learning Rate）：TBD  
+- Batch Size：TBD  
+- Epochs：TBD  
+
+---
+
+### 5.3 实验结果（Top-1 Accuracy）
+
+> 待补充（Planned）
+
+---
+
+## 六、实验结果分析（Analysis）
+
+- 训练损失（Training Loss）随 Epoch 稳定下降，说明模型训练过程较为稳定，未出现明显震荡。  
+- 验证集准确率在前几个 Epoch 内快速提升，随后逐渐趋于平稳，表明模型较快完成特征适配。  
+- 验证准确率在约 50% 附近波动，属于小 Batch Size 与细粒度分类任务中常见现象。  
+- 冻结骨干网络的策略在显著降低训练成本的同时，仍能取得较为合理的分类性能。  
+
+---
+
+## 七、备注与后续计划（Notes & Future Work）
+
+- 本实验作为后续实验的**基线模型（Baseline）**。  
+- 实验结果表明：  
+  ImageNet 预训练的视觉特征对鸟类细粒度分类任务具有较好的迁移能力。  
+- 后续工作计划：
+  - 在服务器 GPU（RTX 5090）上复现实验，用于训练效率对比。  
+  - 开展 **Exp02：ResNet18 全模型微调（Full Fine-tuning）实验**，分析解冻骨干网络对性能的提升效果。  
+
 
