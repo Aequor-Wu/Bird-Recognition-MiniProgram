@@ -14,6 +14,7 @@ BATCH_SIZE = 8
 NUM_EPOCHS = 10
 NUM_CLASSES = 200
 LR = 0.001
+FREEZE_BACKBONE = True  # True: 冻结骨干网络 | False: 全模型训练
 
 # ========= 数据 =========
 train_tf = transforms.Compose([
@@ -35,16 +36,21 @@ val_loader   = DataLoader(val_dataset, batch_size=BATCH_SIZE, shuffle=False)
 
 # ========= 模型 =========
 model = models.resnet18(pretrained=True)
-# 冻结 backbone
-for param in model.parameters():
-    param.requires_grad = False
-
 model.fc = nn.Linear(model.fc.in_features, NUM_CLASSES)
+
+if FREEZE_BACKBONE:
+    for name, param in model.named_parameters():
+        if "fc" not in name:
+            param.requires_grad = False
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print("Using device:", device)
+
 if device.type == 'cuda':
     print("GPU name:", torch.cuda.get_device_name(0))
+
+print("Freeze backbone:", FREEZE_BACKBONE)
+
 model.to(device)
 
 # ========= 训练 =========
@@ -53,7 +59,7 @@ optimizer = optim.Adam(model.parameters(), lr=LR)
 
 for epoch in range(NUM_EPOCHS):
     model.train()
-    total_loss = 0
+    total_loss = 0.0
 
     for images, labels in train_loader:
         images, labels = images.to(device), labels.to(device)
