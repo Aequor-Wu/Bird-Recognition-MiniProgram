@@ -71,7 +71,7 @@ ResNet（Residual Network）通过引入残差连接（Residual Connection），
 - 对硬件资源要求较低
 - 能够作为后续实验的性能基准（Baseline）
 
-该方法对应实验 **Exp01：ResNet18 with Frozen Backbone**。
+该方法对应实验 **experiments/exp01_resnet18_frozen.md**。
 
 ---
 
