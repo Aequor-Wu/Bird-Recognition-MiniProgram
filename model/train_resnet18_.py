@@ -1,3 +1,4 @@
+# 唯一训练脚本（可冻结/可全训练）
 import torch
 import torch.nn as nn
 import torch.optim as optim
