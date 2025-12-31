@@ -1,3 +1,3 @@
 # Model
 
-Deep learning models for bird recognition.
+用于鸟类识别的深度学习模型。
