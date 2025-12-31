@@ -15,7 +15,9 @@ This experiment serves as the baseline for subsequent fine-tuning experiments.
 - Number of classes: 200
 - Input size: 224 × 224
 - Data split: Official train / test split
-- Data loader: `torchvision.datasets.ImageFolder`
+- Data loader: torchvision.datasets.ImageFolder, which automatically assigns class labels based on directory structure.
+- Evaluation metric: Top-1 Accuracy, which measures whether the model’s most confident prediction matches the ground-truth label.
+
 
 ### 1.2 Model
 - Backbone: ResNet18 (ImageNet pretrained)
