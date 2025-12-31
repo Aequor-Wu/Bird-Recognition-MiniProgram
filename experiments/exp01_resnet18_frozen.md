@@ -39,7 +39,7 @@ This experiment serves as the baseline for subsequent fine-tuning experiments.
 
 ### 2.2 Training Configuration
 - Optimizer: Adam
-- Learning rate: 0.001
+- Learning rate: 1e-3
 - Batch size: 8
 - Epochs: 10
 
