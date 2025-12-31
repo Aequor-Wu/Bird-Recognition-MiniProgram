@@ -1,7 +1,7 @@
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 
-TRAIN_PATH = "D:\AAA-Bird_Species_Recognition\dataset\CUB-200-2011\train"  # 改成你的真实路径
+TRAIN_PATH = r"D:\AAA-Bird_Species_Recognition\dataset\CUB-200-2011\train"  # 改成你的真实路径，r是别乱反斜杠
 
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
