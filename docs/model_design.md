@@ -87,7 +87,7 @@ ResNet（Residual Network）通过引入残差连接（Residual Connection），
 通常能够获得更高的识别精度，
 但训练成本相对增加。
 
-该方法对应实验 **Exp02：ResNet18 with Full Fine-tuning**。
+该方法对应实验 **experiments/exp02_resnet18_finetune.md**。
 
 ---
 
