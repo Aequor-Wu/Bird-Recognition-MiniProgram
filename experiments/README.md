@@ -9,12 +9,13 @@ or training configuration.
 
 ## Experiment Summary
 
-| Exp ID | Model     | Strategy          | Environment        | Val Acc (%) | Notes |
-|-------|-----------|-------------------|--------------------|-------------|------|
-| Exp01 | ResNet18  | Frozen Backbone   | Local GPU (RTX3050)| ~50.1       | Baseline run |
-| Exp01 | ResNet18  | Frozen Backbone   | Server GPU (RTX5090)| TBD        | Planned |
-| Exp02 | ResNet18  | Full Fine-tuning  | Local GPU (RTX3050)| TBD         | Planned |
-| Exp02 | ResNet18  | Full Fine-tuning  | Server GPU (RTX5090)| TBD        | Planned |
+| Exp ID | Model    | Strategy         | Environment | Batch | LR     | Epochs | Val Acc (%) | Notes |
+|-------|----------|------------------|-------------|-------|--------|--------|-------------|------|
+| Exp01 | ResNet18 | Frozen Backbone  | RTX3050     | 8     | 0.001  | 10     | 50.14       | Baseline (local GPU) |
+| Exp01 | ResNet18 | Frozen Backbone  | RTX5090     | TBD   | TBD    | TBD    | TBD         | Server run |
+| Exp02 | ResNet18 | Full Fine-tuning | RTX3050     | TBD   | TBD    | TBD    | TBD         | Local comparison |
+| Exp02 | ResNet18 | Full Fine-tuning | RTX5090     | TBD   | TBD    | TBD    | TBD         | Server comparison |
+
 
 ## Experiment Logs
 
@@ -24,4 +25,6 @@ or training configuration.
 
 - `exp02_resnet18_finetune.md`  
   ResNet18 full fine-tuning experiment.
+
+Note: Training hyperparameters may vary across environments due to hardware constraints.
 
