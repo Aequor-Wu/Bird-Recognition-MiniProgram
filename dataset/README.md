@@ -1,14 +1,15 @@
 # Dataset
 
-This project uses the CUB-200-2011 dataset
-(Caltech-UCSD Birds-200-2011).
+本项目使用 **CUB-200-2011（Caltech-UCSD Birds-200-2011）**
+鸟类图像数据集，用于细粒度鸟类物种识别任务。
 
-- Number of classes: 200 bird species
-- Number of images: 11,788
-- Image-level class labels are provided
+- 类别数量：200
+- 图像数量：11,788
+- 标注类型：图像级类别标签
 
-The dataset is widely used in fine-grained bird
-classification research.
+该数据集广泛应用于细粒度图像分类研究，
+适用于迁移学习与模型微调实验。
 
-### 使用的数据集来源
+## 数据集来源
 https://github.com/cyizhuo/CUB_200_2011_dataset
+
