@@ -5,6 +5,6 @@
 - Epochs: 10
 - Optimizer: Adam
 - Learning rate: 0.001
-- Val Accuracy: XX.XX%
+- Val Accuracy: 52.11%
   
 Training experiments and results.
