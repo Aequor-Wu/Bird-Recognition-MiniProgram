@@ -1,15 +1,27 @@
 # Experiments Overview
 
-This folder contains experimental logs for the bird species recognition project.
+This folder records all training and evaluation experiments
+for the bird species recognition project.
 
-## Experiment List
+Each experiment ID corresponds to a specific model and training strategy.
+Different runs under the same experiment may vary by hardware environment
+or training configuration.
 
-| ID | Experiment | Strategy | Val Acc (%) | Notes |
-|----|-----------|----------|-------------|------|
-| Exp01 | ResNet18 | Frozen Backbone | ~50% | Baseline |
-| Exp02 | ResNet18 | Fine-tuning | TBD | In progress |
+## Experiment Summary
 
-## Files
-- `exp01_resnet18_frozen.md` – Frozen backbone transfer learning experiment
-- `exp02_resnet18_finetune.md` – Full fine-tuning experiment (planned)
+| Exp ID | Model     | Strategy          | Environment        | Val Acc (%) | Notes |
+|-------|-----------|-------------------|--------------------|-------------|------|
+| Exp01 | ResNet18  | Frozen Backbone   | Local GPU (RTX3050)| ~50.1       | Baseline run |
+| Exp01 | ResNet18  | Frozen Backbone   | Server GPU (RTX5090)| TBD        | Planned |
+| Exp02 | ResNet18  | Full Fine-tuning  | Local GPU (RTX3050)| TBD         | Planned |
+| Exp02 | ResNet18  | Full Fine-tuning  | Server GPU (RTX5090)| TBD        | Planned |
+
+## Experiment Logs
+
+- `exp01_resnet18_frozen.md`  
+  ResNet18 transfer learning experiment with frozen backbone.
+  Includes results from both local and server GPU runs.
+
+- `exp02_resnet18_finetune.md`  
+  ResNet18 full fine-tuning experiment.
 
