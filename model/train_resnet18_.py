@@ -13,8 +13,8 @@ VAL_DIR   = r"D:\AAA-Bird_Species_Recognition\dataset\CUB-200-2011\test"
 FREEZE_BACKBONE = False   # True: 冻结骨干 | False: 全模型训练
 
 # ========= 基本参数 =========
-BATCH_SIZE = 8
-NUM_EPOCHS = 10
+BATCH_SIZE = 32
+NUM_EPOCHS = 30
 NUM_CLASSES = 200
 
 # 学习率根据策略自动切换（关键）
