@@ -10,7 +10,7 @@ TRAIN_DIR = r"D:\AAA-Bird_Species_Recognition\dataset\CUB-200-2011\train"
 VAL_DIR   = r"D:\AAA-Bird_Species_Recognition\dataset\CUB-200-2011\test"
 
 # ========= 实验开关 =========
-FREEZE_BACKBONE = False   # True: 冻结骨干 | False: 全模型训练
+FREEZE_BACKBONE = True   # True: 冻结骨干 | False: 全模型训练
 
 # ========= 基本参数 =========
 BATCH_SIZE = 32
